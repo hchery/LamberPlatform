@@ -1,0 +1,32 @@
+plugins {
+    id "java-library"
+    id "org.springframework.boot"
+    id "io.spring.dependency-management"
+}
+
+allprojects {
+    group = "$AppMeta_groupId"
+    version = "$AppMeta_version"
+}
+
+subprojects {
+    apply { plugin "java" }
+    java {
+        sourceCompatibility = JavaVersion.toVersion("$ver_SDK_java")
+        targetCompatibility = JavaVersion.toVersion("$ver_SDK_java")
+    }
+    dependencies {
+        // Spring dependencies
+        implementation("org.springframework.boot:spring-boot-starter-web")
+        implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+        implementation("org.springframework.boot:spring-boot-starter-data-redis")
+        // External dependencies
+        implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
+        implementation("org.lionsoul:ip2region:$ver_Library_ip2region")
+        implementation("com.maxmind.geoip2:geoip2:$ver_Library_geoLite")
+        // Test dependencies
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+        testRuntimeOnly('org.junit.platform:junit-platform-launcher')
+    }
+    tasks.named("test", Test) {useJUnitPlatform() }
+}

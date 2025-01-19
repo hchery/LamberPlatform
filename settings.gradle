@@ -1,0 +1,23 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
+pluginManagement {
+    plugins {
+        id "org.springframework.boot" version "$ver_Plugin_springBoot"
+        id "io.spring.dependency-management" version "$ver_Plugin_springDependency"
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenLocal()
+        maven { url = "https://maven.aliyun.com/repository/public/" }
+        maven { url = "https://maven.aliyun.com/repository/central/" }
+        mavenCentral()
+    }
+}
+
+rootProject.name = "$AppMeta_artifactId"
+
+include(
+)
