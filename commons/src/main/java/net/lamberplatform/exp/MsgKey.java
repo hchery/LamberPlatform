@@ -14,10 +14,10 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 public enum MsgKey implements Serializable {
 
+    BIZ_ServerError("BIZ-Server_Error"),
     BIZ_BadRequest("BIZ-Bad_Request"),
     BIZ_NotFound("BIZ-Not_Found"),
     BIZ_MethodNotAllowed("BIZ-Method_Not_Allowed"),
-    BIZ_ServerError("BIZ-Server_Error"),
     ;
 
     @Serial

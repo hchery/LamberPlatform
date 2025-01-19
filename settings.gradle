@@ -22,4 +22,5 @@ rootProject.name = "$AppMeta_artifactId"
 include(
     "commons",
     "webmvc",
+    "i18n",
 )

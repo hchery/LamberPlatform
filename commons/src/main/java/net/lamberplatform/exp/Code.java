@@ -14,10 +14,10 @@ import java.io.Serializable;
 @RequiredArgsConstructor
 public enum Code implements Serializable {
 
+    STD_ServerError(500),
     STD_BadRequest(400),
     STD_NotFound(404),
     SRD_MethodNotAllowed(405),
-    STD_ServerError(500),
     ;
 
     @Serial

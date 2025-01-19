@@ -1,0 +1,8 @@
+# System Meta
+META-System_Name: Lamber
+
+# Error Message
+BIZ-Server_Error: Internal Server Error
+BIZ-Bad_Request: Request Argument Wrong
+BIZ-Not_Found: Resource Not Found
+BIZ-Method_Not_Allowed: Request Method NOT Allowed

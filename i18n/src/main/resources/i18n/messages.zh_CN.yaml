@@ -1,0 +1,8 @@
+# 系统信息
+META-System_Name: Lamber
+
+# 异常信息
+BIZ-Server_Error: 服务内部错误
+BIZ-Bad_Request: 请求参数错误
+BIZ-Not_Found: 请求的资源不存在
+BIZ-Method_Not_Allowed: 不支持的请求方式
