@@ -23,6 +23,7 @@ subprojects {
         implementation("org.springframework.boot:spring-boot-starter-data-redis")
 
         // Code generator
+        implementation("org.apache.commons:commons-lang3")
         implementation("org.projectlombok:lombok")
         implementation("org.mapstruct:mapstruct:$ver_Library_mapStruct")
 
