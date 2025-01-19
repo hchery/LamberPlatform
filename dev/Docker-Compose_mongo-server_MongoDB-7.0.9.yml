@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  mongo-server:
+    image: 'mongo:7.0.9'
+    container_name: 'mongo-server'
+    ports:
+      - '27017:27017'
+    volumes:
+      - '/Users/hchery/Docker/mongo-server_MongoDB-7.0.9/data:/data/db'
+      - '/Users/hchery/Docker/mongo-server_MongoDB-7.0.9/keyfile:/keyfile'
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=123456789
+    command: mongod --replSet rs0 --keyFile /keyfile
