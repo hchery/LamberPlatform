@@ -24,4 +24,5 @@ include(
     "webmvc",
     "i18n",
     "region",
+    "data",
 )
