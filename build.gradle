@@ -16,17 +16,37 @@ subprojects {
         targetCompatibility = JavaVersion.toVersion("$ver_SDK_java")
     }
     dependencies {
+
         // Spring dependencies
         implementation("org.springframework.boot:spring-boot-starter-web")
         implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
         implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
+        // Code generator
+        implementation("org.projectlombok:lombok")
+        implementation("org.mapstruct:mapstruct:$ver_Library_mapStruct")
+
         // External dependencies
         implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
         implementation("org.lionsoul:ip2region:$ver_Library_ip2region")
         implementation("com.maxmind.geoip2:geoip2:$ver_Library_geoLite")
+
         // Test dependencies
         testImplementation('org.springframework.boot:spring-boot-starter-test')
         testRuntimeOnly('org.junit.platform:junit-platform-launcher')
+
+        // AnnotationProcessor dependencies
+        [
+            "org.projectlombok:lombok",
+            "org.springframework.boot:spring-boot-configuration-processor",
+            "org.mapstruct:mapstruct-processor:$ver_Library_mapStruct"
+        ].forEach {
+            compileOnly(it)
+            annotationProcessor(it)
+            testCompileOnly(it)
+            testAnnotationProcessor(it)
+        }
     }
-    tasks.named("test", Test) {useJUnitPlatform() }
+
+    tasks.named("test", Test) { useJUnitPlatform() }
 }

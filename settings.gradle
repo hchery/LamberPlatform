@@ -20,4 +20,5 @@ dependencyResolutionManagement {
 rootProject.name = "$AppMeta_artifactId"
 
 include(
+    "commons",
 )
