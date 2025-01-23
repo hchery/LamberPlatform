@@ -25,4 +25,6 @@ include(
     "i18n",
     "region",
     "data",
+    "acl",
+    "account",
 )
