@@ -24,6 +24,7 @@ subprojects {
 
         // Code generator
         implementation("org.apache.commons:commons-lang3")
+        implementation("com.google.guava:guava")
         implementation("org.projectlombok:lombok")
         implementation("org.mapstruct:mapstruct:$ver_Library_mapStruct")
 
