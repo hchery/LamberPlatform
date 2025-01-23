@@ -1,6 +1,7 @@
 package net.lamberplatform.model.po;
 
 import lombok.Data;
+import org.springframework.data.mongodb.core.mapping.FieldType;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.io.Serial;
@@ -18,6 +19,6 @@ public class MongoPO implements Serializable {
     @Serial
     private static final long serialVersionUID = -5356711247762615532L;
 
-    @MongoId
+    @MongoId(FieldType.OBJECT_ID)
     private String id;
 }
