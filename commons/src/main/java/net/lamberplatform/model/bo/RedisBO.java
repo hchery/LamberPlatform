@@ -1,6 +1,7 @@
 package net.lamberplatform.model.bo;
 
 import lombok.Data;
+import net.lamberplatform.data.redis.RedisId;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -17,5 +18,6 @@ public class RedisBO implements Serializable {
     @Serial
     private static final long serialVersionUID = 6304961557902717888L;
 
+    @RedisId
     private String id;
 }

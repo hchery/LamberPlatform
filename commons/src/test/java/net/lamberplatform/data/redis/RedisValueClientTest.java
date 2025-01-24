@@ -1,6 +1,6 @@
 package net.lamberplatform.data.redis;
 
-import net.lamberplatform.model.po.TimeToLiveRedisPO;
+import net.lamberplatform.model.bo.TimeToLiveRedisBO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,10 +28,10 @@ public class RedisValueClientTest {
     private TestRedisValueClient client;
 
     @Mock
-    private AnyRedisTemplate<TestRedisPO> redisTemplate;
+    private AnyRedisTemplate<TestRedisBO> redisTemplate;
 
     @Mock
-    private ValueOperations<String, TestRedisPO> operations;
+    private ValueOperations<String, TestRedisBO> operations;
 
     @BeforeEach
     public void invokeRedisTemplateOperations() throws Exception {
@@ -50,10 +50,10 @@ public class RedisValueClientTest {
         client.makeMetadataAfterProperties();
         Field valueTypeClazz = clientTypeClazz.getDeclaredField("valueTypeClazz");
         valueTypeClazz.setAccessible(true);
-        assertEquals(TestRedisPO.class, valueTypeClazz.get(client));
+        assertEquals(TestRedisBO.class, valueTypeClazz.get(client));
         Field valueTypeName = clientTypeClazz.getDeclaredField("valueTypeName");
         valueTypeName.setAccessible(true);
-        assertEquals(TestRedisPO.class.getName(), valueTypeName.get(client));
+        assertEquals(TestRedisBO.class.getName(), valueTypeName.get(client));
         Field keyAnnotation = clientTypeClazz.getDeclaredField("keyAnnotation");
         keyAnnotation.setAccessible(true);
         assertEquals("TEST_REDIS_PO", ((RedisKey) keyAnnotation.get(client)).value());
@@ -78,11 +78,11 @@ public class RedisValueClientTest {
     }
 
     @RedisKey("TEST_REDIS_PO")
-    private static class TestRedisPO extends TimeToLiveRedisPO {
+    private static class TestRedisBO extends TimeToLiveRedisBO {
         @Serial
         private static final long serialVersionUID = -7329378482217381303L;
     }
 
-    private static class TestRedisValueClient extends RedisValueClient<TestRedisPO> {
+    private static class TestRedisValueClient extends RedisValueClient<TestRedisBO> {
     }
 }
