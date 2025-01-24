@@ -20,18 +20,4 @@ public class SpringConfigurableRedisSerializer implements ConfigurableRedisSeria
     private String keyPrefix = "net.lamberplatform";
 
     private Charset charset = StandardCharsets.UTF_8;
-
-    @Override
-    public byte[] serialize(String value) throws SerializationException {
-        return "%s:%s".formatted(keyPrefix, value).getBytes(charset);
-    }
-
-    @Override
-    public String deserialize(byte[] bytes) throws SerializationException {
-        String key = new String(bytes, charset);
-        if (!key.startsWith(keyPrefix)) {
-            return key;
-        }
-        return key.substring(keyPrefix.length());
-    }
 }
