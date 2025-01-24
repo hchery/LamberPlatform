@@ -26,5 +26,9 @@ include(
     "region",
     "data",
     "acl",
-    "account",
+    "consul",
+    "logs",
+    "system",
+    "lamber-gui",
+    "lamber-server",
 )
