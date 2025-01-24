@@ -12,15 +12,15 @@ import org.springframework.data.redis.serializer.RedisSerializer;
  */
 public class AnyRedisTemplate<T> extends RedisTemplate<String, T> {
 
-    public AnyRedisTemplate() {
-        setKeySerializer(RedisSerializer.string());
+    public AnyRedisTemplate(ConfigurableRedisSerializer keySerializer) {
+        setKeySerializer(keySerializer);
         setHashKeySerializer(RedisSerializer.string());
         setValueSerializer(RedisSerializer.java());
         setHashValueSerializer(RedisSerializer.java());
     }
 
-    public AnyRedisTemplate(RedisConnectionFactory factory) {
-        this();
+    public AnyRedisTemplate(RedisConnectionFactory factory, ConfigurableRedisSerializer keySerializer) {
+        this(keySerializer);
         setConnectionFactory(factory);
         afterPropertiesSet();
     }

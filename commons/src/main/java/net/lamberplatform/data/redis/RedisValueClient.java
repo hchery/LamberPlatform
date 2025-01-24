@@ -30,8 +30,8 @@ public abstract class RedisValueClient<T> {
     private ValueOperations<String, T> valueOperations;
 
     @Resource
-    private void setValueOperations(RedisConnectionFactory factory) {
-        this.redisTemplate = new AnyRedisTemplate<>(factory);
+    private void setValueOperations(RedisConnectionFactory factory, ConfigurableRedisSerializer keySerializer) {
+        this.redisTemplate = new AnyRedisTemplate<>(factory, keySerializer);
         this.valueOperations = this.redisTemplate.opsForValue();
     }
 
