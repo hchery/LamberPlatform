@@ -22,10 +22,10 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  * EMAIL: h.chery@qq.com
  */
 @ExtendWith(MockitoExtension.class)
-public class RedisValueClientTest {
+public class RedisDAOTest {
 
     @InjectMocks
-    private TestRedisValueClient client;
+    private TestRedisDAO client;
 
     @Mock
     private AnyRedisTemplate<TestRedisBO> redisTemplate;
@@ -35,7 +35,7 @@ public class RedisValueClientTest {
 
     @BeforeEach
     public void invokeRedisTemplateOperations() throws Exception {
-        Class<?> clientTypeClazz = RedisValueClient.class;
+        Class<?> clientTypeClazz = RedisDAO.class;
         Field rt = clientTypeClazz.getDeclaredField("redisTemplate");
         rt.setAccessible(true);
         rt.set(client, redisTemplate);
@@ -46,7 +46,7 @@ public class RedisValueClientTest {
 
     @Test
     public void makeMetadataAfterProperties() throws Exception {
-        Class<?> clientTypeClazz = RedisValueClient.class;
+        Class<?> clientTypeClazz = RedisDAO.class;
         client.makeMetadataAfterProperties();
         Field valueTypeClazz = clientTypeClazz.getDeclaredField("valueTypeClazz");
         valueTypeClazz.setAccessible(true);
@@ -83,6 +83,6 @@ public class RedisValueClientTest {
         private static final long serialVersionUID = -7329378482217381303L;
     }
 
-    private static class TestRedisValueClient extends RedisValueClient<TestRedisBO> {
+    private static class TestRedisDAO extends RedisDAO<TestRedisBO> {
     }
 }
