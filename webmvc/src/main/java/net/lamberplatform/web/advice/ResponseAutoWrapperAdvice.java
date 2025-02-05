@@ -1,9 +1,9 @@
 package net.lamberplatform.web.advice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.annotation.Resource;
 import lombok.SneakyThrows;
 import net.lamberplatform.model.dto.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -43,7 +43,7 @@ public class ResponseAutoWrapperAdvice implements ResponseBodyAdvice<Object> {
 
     private Function<Object, String> jsonFmt;
 
-    @Resource
+    @Autowired
     protected void setJsonFmt(ObjectMapper objectMapper) {
         // 这里由于处理异常因此不使用lambda
         this.jsonFmt = new Function<>() {

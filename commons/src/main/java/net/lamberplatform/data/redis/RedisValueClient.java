@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.experimental.Accessors;
 import org.springframework.beans.factory.BeanInitializationException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.TimeToLive;
 import org.springframework.data.redis.core.ValueOperations;
@@ -29,7 +30,7 @@ public abstract class RedisValueClient<T> {
     private AnyRedisTemplate<T> redisTemplate;
     private ValueOperations<String, T> valueOperations;
 
-    @Resource
+    @Autowired
     private void setValueOperations(RedisConnectionFactory factory, ConfigurableRedisSerializer keySerializer) {
         this.redisTemplate = new AnyRedisTemplate<>(factory, keySerializer);
         this.valueOperations = this.redisTemplate.opsForValue();
