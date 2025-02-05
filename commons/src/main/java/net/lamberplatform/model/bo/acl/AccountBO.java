@@ -27,4 +27,6 @@ public class AccountBO extends ValueMongoBO {
     private static final long serialVersionUID = -3498167563884330634L;
 
     private String account;
+    private AccountRole role;
+    private AccountStatus status;
 }

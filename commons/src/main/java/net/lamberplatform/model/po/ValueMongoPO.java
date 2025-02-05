@@ -23,7 +23,7 @@ public abstract class ValueMongoPO extends ConstMongoPO {
     @Serial
     private static final long serialVersionUID = 8372899864208751494L;
 
-    @Field("UPDATE_TIME")
+    @Field("update_time")
     @LastModifiedDate
     private LocalDateTime updateTime;
 }

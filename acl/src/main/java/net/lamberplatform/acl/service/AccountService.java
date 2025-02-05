@@ -6,6 +6,8 @@ import net.lamberplatform.acl.po.AccountPO;
 import net.lamberplatform.acl.po.mapper.AccountMapper;
 import net.lamberplatform.data.mongodb.RefMongoDaoService;
 import net.lamberplatform.model.bo.acl.AccountBO;
+import net.lamberplatform.model.bo.acl.AccountRole;
+import net.lamberplatform.model.bo.acl.AccountStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -30,8 +32,12 @@ public class AccountService extends RefMongoDaoService<AccountPO, AccountDAO> {
         return daoRef().findByAccount(account).map(accountMapper::po2bo);
     }
 
-    public void save(AccountBO bo) {
+    public AccountBO save(AccountBO bo) {
         AccountPO po = accountMapper.bo2po(bo);
-        daoRef().save(po);
+        return accountMapper.po2bo(daoRef().save(po));
+    }
+
+    public boolean existsUsingByRole(AccountRole role) {
+        return daoRef().existsByRoleAndStatus(role, AccountStatus.USING);
     }
 }

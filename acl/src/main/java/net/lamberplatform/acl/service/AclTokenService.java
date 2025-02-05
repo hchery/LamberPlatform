@@ -29,4 +29,9 @@ public class AclTokenService extends RefMongoDaoService<AclTokenPO, AclTokenDAO>
     public Optional<AclTokenBO> getByToken(String token) {
         return daoRef().findByToken(token).map(aclTokenMapper::po2bo);
     }
+
+    public AclTokenBO save(AclTokenBO bo) {
+        AclTokenPO po = aclTokenMapper.bo2po(bo);
+        return aclTokenMapper.po2bo(daoRef().save(po));
+    }
 }

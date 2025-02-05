@@ -23,7 +23,7 @@ public abstract class ConstMongoPO extends MongoPO {
     @Serial
     private static final long serialVersionUID = -2309548629768909632L;
 
-    @Field("CREATE_TIME")
+    @Field("create_time")
     @CreatedDate
     private LocalDateTime createTime;
 }

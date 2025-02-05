@@ -3,6 +3,8 @@ package net.lamberplatform.acl.po;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import net.lamberplatform.model.bo.acl.AccountRole;
+import net.lamberplatform.model.bo.acl.AccountStatus;
 import net.lamberplatform.model.po.ValueMongoPO;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,7 +21,7 @@ import java.io.Serial;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
-@Document("account_details")
+@Document("account_detail")
 public class AccountPO extends ValueMongoPO {
 
     @Serial
@@ -28,4 +30,12 @@ public class AccountPO extends ValueMongoPO {
     @Field("account")
     @Indexed(unique = true)
     private String account;
+
+    @Field("role")
+    @Indexed
+    private AccountRole role;
+
+    @Field("status")
+    @Indexed
+    private AccountStatus status;
 }

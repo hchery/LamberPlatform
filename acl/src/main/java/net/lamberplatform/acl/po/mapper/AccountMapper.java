@@ -13,4 +13,8 @@ import org.mapstruct.Mapper;
  */
 @Mapper(componentModel = "spring")
 public interface AccountMapper extends GenericMapper<AccountPO, AccountBO> {
+
+    default boolean isCanDelete(AccountPO po) {
+        return AccountBO.Specials.ADMIN.equals(po.getAccount());
+    }
 }
