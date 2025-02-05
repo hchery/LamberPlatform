@@ -2,7 +2,6 @@ package net.lamberplatform.data.redis;
 
 import com.google.common.annotations.VisibleForTesting;
 import jakarta.annotation.PostConstruct;
-import jakarta.annotation.Resource;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.SneakyThrows;
