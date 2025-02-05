@@ -2,7 +2,6 @@ package net.lamberplatform.data.redis;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.data.redis.serializer.SerializationException;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;

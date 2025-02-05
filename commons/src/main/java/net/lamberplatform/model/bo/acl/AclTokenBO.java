@@ -20,4 +20,7 @@ public class AclTokenBO extends ValueMongoBO {
 
     @Serial
     private static final long serialVersionUID = 5273847935123141822L;
+
+    private String userId;
+    private String token;
 }

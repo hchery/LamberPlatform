@@ -5,7 +5,15 @@ plugins {
 }
 
 dependencies {
-    api(
-        project(":commons")
+    implementation(
+        project(":commons"),
+        project(":webmvc"),
+        project(":i18n"),
+        project(":region"),
+        project(":data"),
+        project(":acl"),
+        project(":consul"),
+        project(":logs"),
+        project(":system"),
     )
 }

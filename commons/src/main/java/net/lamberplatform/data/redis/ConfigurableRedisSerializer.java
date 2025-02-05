@@ -19,9 +19,7 @@ public interface ConfigurableRedisSerializer extends RedisSerializer<String> {
 
     @Override
     default byte[] serialize(String value) throws SerializationException {
-        String keyPrefix = getKeyPrefix();
-        Charset charset = getCharset();
-        return "%s:%s".formatted(keyPrefix, value).getBytes(charset);
+        return "%s:%s".formatted(getKeyPrefix(), value).getBytes(getCharset());
     }
 
     @Override
@@ -29,9 +27,6 @@ public interface ConfigurableRedisSerializer extends RedisSerializer<String> {
         String keyPrefix = getKeyPrefix();
         Charset charset = getCharset();
         String key = new String(bytes, charset);
-        if (!key.startsWith(keyPrefix)) {
-            return key;
-        }
-        return key.substring(keyPrefix.length());
+        return key.startsWith(keyPrefix) ? key.substring(keyPrefix.length()) : key;
     }
 }
